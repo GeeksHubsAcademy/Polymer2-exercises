@@ -14,10 +14,17 @@
     <script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 
     <link rel="import" href="/src/project-polymer-app/project-polymer-app.html">
+    <link rel="import" href="/src/project-polymer-app/key-logger.html">
 
   </head>
 
   <body>
     <project-polymer-app></project-polymer-app>
+    <key-logger></key-logger>
+    <script> 
+   document.querySelector('key-logger').addEventListener('tecla', function (e) {
+      console.log("Evento Padre. Se ha pulsado la tecla.....", e.detail.tecla);
+    });
+    </script>
   </body>
 </html>

@@ -1,14 +1,22 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="/src/project-polymer-app/element-state.html">
+
 
 <dom-module id="project-polymer-app">
   <template>
     <style>
+      :host {
+        display: block;
+        width: 100px;
+        height: 100px;
+        background-color: black;
+      }
 
+      h2 {
+        color: white;
+      }
     </style>
 
-    <element-state elemento="Agua" temperatura=150></element-state>
-
+    <h2> 0 </h2>
   </template>
 
   <script>
@@ -16,14 +24,20 @@
       static get is() { return 'project-polymer-app'; }
       static get properties() {
         return { 
-          nombre: String,
-          apellidos: String
         }
       }
 
-      _nombreCompleto(nombre, apellidos){
-        return `${nombre} ${apellidos}`
+      ready(){
+        super.ready();
+        this.addEventListener('click', this._alert)
       }
+        
+      _alert(e) {
+        console.log(e)
+        alert('Click')
+      }
+
+
     }
 
 

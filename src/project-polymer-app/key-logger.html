@@ -1,0 +1,36 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+
+<dom-module id="key-logger">
+  <template>
+    <style>
+    </style>
+  </template>
+
+  <script>
+    class Keylogger extends Polymer.Element {
+      static get is() { return 'key-logger'; }
+      static get properties() {
+        return { }
+      }
+
+      ready() {
+        super.ready();
+        window.addEventListener('keyup', this.teclaPulsada.bind(this));
+      }
+
+      teclaPulsada(e){
+        this.dispatchEvent(new CustomEvent('tecla', {detail: {tecla: e.key} }));
+      }
+
+      disconnectedCallback(){
+        super.disconnectedCallback();
+        window.removeEventListener('keyup', this.teclaPulsada)
+        console.log('disconned')
+      }
+    }
+
+
+    window.customElements.define(Keylogger.is, Keylogger);
+  </script>
+</dom-module>
