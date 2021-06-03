@@ -1,0 +1,44 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="element-state">
+  <template>
+    <style>
+
+    </style>
+
+    <div>
+      <p>Elemento: [[elemento]] </p>
+      <p>Temperatura: [[temperatura]] </p>
+      <p>Estado: [[_estado(elemento, temperatura)]] </p>
+    </div>
+  </template>
+
+
+  <script>
+
+    class ElementState extends Polymer.Element {
+      static get is() { return 'element-state'; }
+      static get properties() {
+        return { 
+          elemento: String,
+          temperatura: Number
+        }
+      }
+
+      _estado(elemento, temperatura) {
+
+        if(elemento.toLowerCase() === "agua" && temperatura < 0)
+          return 'Solido'
+        
+        if(elemento.toLowerCase() === "agua" && temperatura > 0 && temperatura < 100)
+          return 'Liquido'
+
+        if(elemento.toLowerCase() === "agua" && temperatura > 100)
+          return 'Gas'
+      }
+    }
+
+
+    window.customElements.define(ElementState.is, ElementState);
+  </script>
+</dom-module>
