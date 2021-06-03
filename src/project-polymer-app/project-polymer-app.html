@@ -7,9 +7,11 @@
 
     </style>
 
-      <x-nav></x-nav>
+    <x-nav></x-nav>
 
-
+    <p>
+      [[_nombreCompleto(nombre, apellidos)]]
+    </p>
 
   </template>
 
@@ -17,7 +19,14 @@
     class ProjectPolymerApp extends Polymer.Element {
       static get is() { return 'project-polymer-app'; }
       static get properties() {
-        return { }
+        return { 
+          nombre: String,
+          apellidos: String
+        }
+      }
+
+      _nombreCompleto(nombre, apellidos){
+        return `${nombre} ${apellidos}`
       }
     }
 
