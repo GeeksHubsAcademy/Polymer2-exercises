@@ -1,0 +1,54 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="article-blog">
+  <template>
+    <style>
+      p {
+        color: red
+      }
+    </style>
+
+    <article>
+      <h1> [[title]] </h1>
+      <nav>
+        <span>[[date]]</span> <span> [[author]] </span> <span> [[likes]] </span>
+      </nav>
+      <p>
+        [[content]]
+      </p>
+    </article>
+  </template>
+
+  <script>
+    class ArticleBlog extends Polymer.Element {
+      static get is() { return 'article-blog'; }
+      static get properties() {
+        return { 
+          title: {
+            type: String,
+            value: ''
+          },
+          date: {
+            type: String,
+            value: ''
+          },
+          author: {
+            type: String,
+            value: ''
+          },
+          likes: {
+            type: Number,
+            value: ''
+          },
+          content: {
+            type: String,
+            value: ''
+          },
+        }
+      }
+    }
+
+
+    window.customElements.define(ArticleBlog.is, ArticleBlog);
+  </script>
+</dom-module>

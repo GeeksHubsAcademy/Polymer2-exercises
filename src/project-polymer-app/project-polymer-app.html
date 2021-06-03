@@ -1,0 +1,42 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="/src/project-polymer-app/article-blog.html">
+
+<dom-module id="project-polymer-app">
+  <template>
+    <style>
+
+    </style>
+
+    <article-blog
+      title="Nacidos de la Bruma"
+      date="01-03-2021"
+      author="Brandom"
+      likes=5
+      content="Lorem Inpuse...."
+    ></article-blog>
+      <article-blog
+      title="Nacidos de la Bruma"
+      date="01-03-2021"
+      author="Brandom"
+      likes=5
+      content="Lorem Inpuse...."
+    ></article-blog>
+  </template>
+
+  <script>
+    class ProjectPolymerApp extends Polymer.Element {
+      static get is() { return 'project-polymer-app'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: "Soy innevitable"
+          }
+        }
+      }
+    }
+
+
+    window.customElements.define(ProjectPolymerApp.is, ProjectPolymerApp);
+  </script>
+</dom-module>
