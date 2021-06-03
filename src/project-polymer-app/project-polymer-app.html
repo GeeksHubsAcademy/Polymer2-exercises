@@ -1,5 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="/src/project-polymer-app/xnav.html">
 
 <dom-module id="project-polymer-app">
   <template>
@@ -7,10 +7,9 @@
 
     </style>
 
-    <template is="dom-repeat" items="[[employees]]">
-      <p>name: [[item.name]] </p>
-      <p>age: [[item.age]] </p>
-    </template>
+      <x-nav></x-nav>
+
+
 
   </template>
 
@@ -18,17 +17,7 @@
     class ProjectPolymerApp extends Polymer.Element {
       static get is() { return 'project-polymer-app'; }
       static get properties() {
-        return { 
-          employees: {
-            type: Array,
-            value: () => {
-              return [
-                { name: "Manuel S.", age: 25 },
-                { name: "Antonio", age: 26 }
-              ]
-            }
-          }
-        }
+        return { }
       }
     }
 
