@@ -5,9 +5,9 @@
     <style>
     </style>
 
-  <input type="text" value='{{nombre::input}}'>
-  <h2>Observable [[nombre]] </h2>
-
+  <input type="text" value='{{valor1::input}}'>
+  <input type="text" value='{{valor2::input}}'>
+  <input type="text" value='{{valor3::input}}'>
   </template>
 
   <script>
@@ -16,25 +16,31 @@
       static get properties() {
         // Para que un evento sea observable, hay que indicarlo en la propiedad
         return { 
-          nombre: {
-            type: String,
-            value: '',
-            observer: 'changeNombre' // esta string es el nombre de la función que va a llamar
-          }
+          valor1: String,
+          valor2: String,
+          valor3: String
         }
       }
 
-      // La funcion siempre tiene dos parametros, new y old
-      changeNombre(newValue, oldValue){
-        if(newValue === "Enviar") {
-          // evento pers. para el padre 
-          this.dispatchEvent(new CustomEvent('observable',{detail: { mensaje: 'OK'}}))
-        }
-
-        if(oldValue === "Enviar") {
-          this.dispatchEvent(new CustomEvent('observable', { detail:{ mensaje: 'Ya no'}}))
-        }
+      static get observers() {
+        return [
+          'metodo1(valor1, valor2, valor3)', 'metodo2(valor2)', 'metodo3(valor3)'
+        ]
       }
+
+      metodo1(v1, v2, v3){
+        console.log(v1, v2, v3)
+      }
+
+      metodo2(valor2){
+        console.log(valor2)
+      }
+
+      metodo3(valor3){
+        console.log(valor3)
+      }
+
+
 
 
     }
