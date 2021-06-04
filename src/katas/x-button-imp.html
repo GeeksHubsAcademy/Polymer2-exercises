@@ -1,0 +1,48 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="x-button-imp">
+  <template>
+    <style>
+      :host {
+       
+        width: 100px;
+        height: 100px;
+        background-color: black;
+      }
+
+      span {
+        color: white;
+      }
+    </style>
+
+    <span> [[counter_2]]</span>
+  </template>
+
+  <script>
+    class XButtonImp extends Polymer.Element {
+      static get is() { return 'x-button-imp'; }
+      static get properties() {
+        return {  
+          counter_2: {
+            type: Number,
+            value: 0
+          }
+        }
+      }
+
+      ready() {
+        super.ready();
+        window.addEventListener('click', _increment_imp)
+      }
+
+      _increment_imp(){
+        this.counter_2++;
+      }
+
+
+    }
+
+
+    window.customElements.define(XButtonImp.is, XButtonImp);
+  </script>
+</dom-module>

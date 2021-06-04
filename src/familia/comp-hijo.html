@@ -1,0 +1,35 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="comp-hijo">
+  <template>
+    <h1> [[who]] </h1>
+    <button on-click="sendMessage"> Enviar </button>
+  </template>
+
+  <script>
+    class CompHijo extends Polymer.Element {
+      static get is() { return 'comp-hijo'; }
+      static get properties() {
+        return {
+          who: {
+            type: String,
+            value: 'Nieto'
+          }
+        }
+      }
+
+      sendMessage(){
+        this.dispatchEvent(new CustomEvent('mensaje', {
+          detail: { valor: 'Soy el Nieto' },
+          bubbles: true,
+          composed: true
+        }));
+      }
+
+
+    }
+
+
+    window.customElements.define(CompHijo.is, CompHijo);
+  </script>
+</dom-module>

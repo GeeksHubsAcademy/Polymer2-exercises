@@ -1,0 +1,37 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="x-notify">
+  <template>
+    <style>
+
+    </style>
+
+    <p> Este elemento viene de mi Padre: [[mensaje]] </p>
+    <button on-click="reset"> Reset </button>
+  </template>
+
+
+  <script>
+
+    class XNotify extends Polymer.Element {
+      static get is() { return 'x-notify'; }
+      static get properties() {
+        return { 
+          mensaje: {
+            type: String,
+            value: '',
+            notify: true
+          }
+        }
+      }
+
+      reset(){
+        this.mensaje = '';
+      }
+
+    }
+
+
+    window.customElements.define(XNotify.is, XNotify);
+  </script>
+</dom-module>

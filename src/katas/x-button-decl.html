@@ -1,0 +1,33 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="x-button-decl">
+  <template>
+    <style>
+    </style>
+
+    <button on-click="_increment"> [[counter]] </button>
+  </template>
+
+  <script>
+    class XButtonDecl extends Polymer.Element {
+      static get is() { return 'x-button-decl'; }
+      static get properties() {
+        return {  
+          counter: {
+            type: Number,
+            value: 0
+          }
+        }
+      }
+
+      _increment(){
+        this.counter++;
+      }
+
+
+    }
+
+
+    window.customElements.define(XButtonDecl.is, XButtonDecl);
+  </script>
+</dom-module>

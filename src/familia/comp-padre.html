@@ -1,0 +1,37 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="/src/familia/comp-hijo.html">
+
+<dom-module id="comp-padre">
+  <template>
+    <comp-hijo></comp-hijo>
+    <h1> [[who]] </h1>
+    <h2> [[prop1]] </h2>
+    <button on-click="sendMessage"> Enviar </button>
+  </template>
+
+  <script>
+    class CompPadre extends Polymer.Element {
+      static get is() { return 'comp-padre'; }
+      static get properties() {
+        return {
+          who: {
+            type: String,
+            value: 'Padre'
+          },
+          prop1: String
+        }
+      }
+
+      sendMessage(){
+        this.dispatchEvent( new CustomEvent('mensaje', {
+          detail: { valor: 'Soy el Padre'},
+          bubbles: true,
+          composed: true
+        }))
+      }
+    }
+
+
+    window.customElements.define(CompPadre.is, CompPadre);
+  </script>
+</dom-module>

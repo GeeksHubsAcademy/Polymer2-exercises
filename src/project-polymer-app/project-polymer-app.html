@@ -1,22 +1,14 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-
+<link rel="import" href="/src/pruebas/xnotify.html">
 
 <dom-module id="project-polymer-app">
   <template>
     <style>
-      :host {
-        display: block;
-        width: 100px;
-        height: 100px;
-        background-color: black;
-      }
-
-      h2 {
-        color: white;
-      }
     </style>
 
-    <h2> 0 </h2>
+    <p> [[estadoAnimo]] </p>
+
+    <x-notify mensaje="[[estadoAnimo]]"> </x-notify>
   </template>
 
   <script>
@@ -24,17 +16,11 @@
       static get is() { return 'project-polymer-app'; }
       static get properties() {
         return { 
+          estadoAnimo: {
+            type: String,
+            value: 'de rechupete'
+          }
         }
-      }
-
-      ready(){
-        super.ready();
-        this.addEventListener('click', this._alert)
-      }
-        
-      _alert(e) {
-        console.log(e)
-        alert('Click')
       }
 
 
