@@ -1,25 +1,38 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="/src/pruebas/xnotify.html">
 
 <dom-module id="project-polymer-app">
   <template>
     <style>
     </style>
 
-    <p> [[estadoAnimo]] </p>
+  <input type="text" value='{{nombre::input}}'>
+  <h2>Observable [[nombre]] </h2>
 
-    <x-notify mensaje="[[estadoAnimo]]"> </x-notify>
   </template>
 
   <script>
     class ProjectPolymerApp extends Polymer.Element {
       static get is() { return 'project-polymer-app'; }
       static get properties() {
+        // Para que un evento sea observable, hay que indicarlo en la propiedad
         return { 
-          estadoAnimo: {
+          nombre: {
             type: String,
-            value: 'de rechupete'
+            value: '',
+            observer: 'changeNombre' // esta string es el nombre de la función que va a llamar
           }
+        }
+      }
+
+      // La funcion siempre tiene dos parametros, new y old
+      changeNombre(newValue, oldValue){
+        if(newValue === "Enviar") {
+          // evento pers. para el padre 
+          this.dispatchEvent(new CustomEvent('observable',{detail: { mensaje: 'OK'}}))
+        }
+
+        if(oldValue === "Enviar") {
+          this.dispatchEvent(new CustomEvent('observable', { detail:{ mensaje: 'Ya no'}}))
         }
       }
 

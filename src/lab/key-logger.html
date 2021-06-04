@@ -14,13 +14,17 @@
         return { }
       }
 
+      constructor(){ }
+
       ready() {
         super.ready();
         window.addEventListener('keyup', this.teclaPulsada.bind(this));
       }
 
       teclaPulsada(e){
-        this.dispatchEvent(new CustomEvent('tecla', {detail: {tecla: e.key} }));
+        this.dispatchEvent(
+          new CustomEvent('tecla', { detail: {tecla: e.key} })
+        );
       }
 
       disconnectedCallback(){
