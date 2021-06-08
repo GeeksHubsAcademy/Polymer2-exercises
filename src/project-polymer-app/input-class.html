@@ -1,0 +1,31 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="input-class">
+  <script>
+    class InputClass extends Polymer.Element {
+      static get is() { return 'input-class'; }
+      static get properties() {
+        return { 
+            usuario: String
+        }
+      }
+
+      static get observers() {
+        return [ 
+            'verUsuario(usuario)'
+        ]
+      }
+
+      verUsuario(usuario){
+          console.log(usuario)
+      }
+
+      my_alert(){
+          alert('string')
+      }
+    }
+
+
+    window.customElements.define(InputClass.is, InputClass);
+  </script>
+</dom-module>

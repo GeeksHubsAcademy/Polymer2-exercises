@@ -1,0 +1,31 @@
+<script>
+  const InputMixin = Polymer.dedupingMixin( (PolymerElement) => {
+    return class extends PolymerElement {
+      static get properties(){
+        return  {
+          usuario: String
+        }
+      }
+      
+      static get observers() {
+        return [ 
+          'verUsuario(usuario)'
+        ]
+      }
+
+      ready(){
+        super.ready();
+        console.log('Siempre va hacer este console.log()')
+      }
+
+      verUsuario(usuario){
+        console.log(usuario)
+      }
+
+      my_alert(){
+        alert('string')
+      }
+
+    }
+  });
+</script>

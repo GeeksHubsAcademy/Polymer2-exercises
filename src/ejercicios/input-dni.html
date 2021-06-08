@@ -7,6 +7,7 @@
 
     <input type="text" name="dni_number" value="{{dni_number::input}}">
     <input type="text" name="dni_letter" value="{{dni_letter::input}}">
+    <button on-click="_comprobar" disabled$=[[!disabled]]> Comprobar </button>
 
   </template>
 
@@ -14,14 +15,32 @@
     class InputDNI extends Polymer.Element {
       static get is() { return 'input-dni'; }
       static get properties() {
-        return { }
+        return { 
+          dni_number: String,
+          dni_letter: String,
+          disabled: {
+            type: Boolean,
+            value: true
+          }
+        }
       }
 
       static get observers() {
-        return [ ]
+        return [ 
+          '_comprobarDNI(dni_number, dni_letter)'
+        ]
+      }
+
+      _comprobarDNI(number, letter) {
+        number = parseInt(number);
+        
+        const letters='TRWAGMYFPDXBNJZSQVHLCKET';
+        let index = number % 23;
+        
+        console.log(letter?.toUpperCase())
+        this.disabled = letters[index] === letter?.toUpperCase();
       }
     }
-
 
     window.customElements.define(InputDNI.is, InputDNI);
   </script>
