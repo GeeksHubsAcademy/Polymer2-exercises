@@ -1,0 +1,28 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="input-dni">
+  <template>
+    <style>
+    </style>
+
+    <input type="text" name="dni_number" value="{{dni_number::input}}">
+    <input type="text" name="dni_letter" value="{{dni_letter::input}}">
+
+  </template>
+
+  <script>
+    class InputDNI extends Polymer.Element {
+      static get is() { return 'input-dni'; }
+      static get properties() {
+        return { }
+      }
+
+      static get observers() {
+        return [ ]
+      }
+    }
+
+
+    window.customElements.define(InputDNI.is, InputDNI);
+  </script>
+</dom-module>

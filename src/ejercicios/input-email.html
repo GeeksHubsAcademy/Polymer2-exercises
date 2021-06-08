@@ -1,0 +1,46 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="input-email">
+  <template>
+    <style>
+    </style>
+
+    <input type="text" value="{{value_email::input}}">
+    <button on-click="enviar" disabled$=[[can_send]]> Enviar </button>
+  </template>
+
+  <script>
+    class InputEmail extends Polymer.Element {
+      static get is() { return 'input-email'; }
+      static get properties() {
+        return { 
+          value_email: String,
+          can_send: {
+            type: Boolean,
+            value: true
+          }
+        }
+      }
+
+      static get observers() {
+        return [ 
+          '_validateEmail(value_email)'
+        ]
+      }
+
+      _validateEmail(email){
+        let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        this.can_send = !(re.test(email));
+      }
+
+
+      enviar() {
+        console.log("Correo Enviado");
+      }
+
+    }
+
+
+    window.customElements.define(InputEmail.is, InputEmail);
+  </script>
+</dom-module>
