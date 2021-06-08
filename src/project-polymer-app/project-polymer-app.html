@@ -6,8 +6,10 @@
     </style>
 
   <input type="text" value='{{valor1::input}}'>
-  <input type="text" value='{{valor2::input}}'>
+  <h2 class$="[[style]]"> H2 </h2>
   <input type="text" value='{{valor3::input}}'>
+
+  <button on-click="limpiar"> Borrar </button>
   </template>
 
   <script>
@@ -18,31 +20,59 @@
         return { 
           valor1: String,
           valor2: String,
-          valor3: String
+          valor3: String,
+          objecto: {
+            type: Object,
+            value: () => {
+              return {
+                nombre: 'Manuel',
+                edad: 26,
+                estaTrajando: true
+              }
+            }
+          },
+          matriz: {
+            type: Array,
+            value: () => {
+              return [ 1, 2, 3, 4]
+            }
+          }
         }
       }
 
       static get observers() {
         return [
-          'metodo1(valor1, valor2, valor3)', 'metodo2(valor2)', 'metodo3(valor3)'
+          'metodo1(valor1, valor2, valor3)', 
+          'metodo2(valor2)', 
+          'metodo3(valor3)',
+          'observerParcial(objecto.edad)',
+          'observerMatriz(matriz.splices)',
         ]
       }
 
-      metodo1(v1, v2, v3){
+      metodo1(v1, v2, v3) {
         console.log(v1, v2, v3)
       }
 
-      metodo2(valor2){
+      metodo2(valor2) {
         console.log(valor2)
       }
 
-      metodo3(valor3){
+      metodo3(valor3) {
         console.log(valor3)
       }
 
+      observerParcial(edad) {
+        console.log(edad);
+      }
 
+      observerMatriz(valor){
+        console.log(valor)
+      }
 
-
+      limpiar(){
+        this.push('matriz', 10)
+      }
     }
 
 
